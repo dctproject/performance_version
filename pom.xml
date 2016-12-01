@@ -100,6 +100,9 @@
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     <thymeleaf.version>3.0.2.RELEASE</thymeleaf.version>
     <springframework.version>4.3.3.RELEASE</springframework.version>
+    <hibernate.version>5.0.11.Final</hibernate.version>
+    <mysql-connector-java.version>5.1.38</mysql-connector-java.version>
+    <datasource-dbcp.version>7.0.65</datasource-dbcp.version>
   </properties>
   
 
@@ -270,10 +273,15 @@
       <scope>compile</scope>
     </dependency>
 
+    <!--<dependency>-->
+      <!--<groupId>javax.persistence</groupId>-->
+      <!--<artifactId>persistence-api</artifactId>-->
+      <!--<version>1.0.2</version>-->
+    <!--</dependency>-->
     <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>persistence-api</artifactId>
-      <version>1.0.2</version>
+      <groupId>org.hibernate.javax.persistence</groupId>
+      <artifactId>hibernate-jpa-2.1-api</artifactId>
+      <version>1.0.0.Final</version>
     </dependency>
 
     <dependency>

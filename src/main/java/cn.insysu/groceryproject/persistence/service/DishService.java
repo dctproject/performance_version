@@ -1,0 +1,27 @@
+package cn.insysu.groceryproject.persistence.service;
+
+import cn.insysu.groceryproject.persistence.dao.DishDao;
+import cn.insysu.groceryproject.persistence.entity.Dish;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+/**
+ * Created by Souler on 2016/12/1.
+ */
+@Service
+@Transactional
+public class DishService {
+    @Autowired
+    private DishDao dao;
+
+    public DishService() { super(); }
+
+    public void create(final Dish entity) { dao.create(entity); }
+
+    public Dish findOne(final long id) { return dao.findOne(id); }
+
+    public List<Dish> findAll() { return dao.findAll(); }
+}

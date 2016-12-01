@@ -40,7 +40,7 @@ public abstract class AbstractJPADao<T extends Serializable> {
     }
 
     public void delete(final T entity) {
-        entityManager.remove(entity);
+        entityManager.remove(entityManager.merge(entity));
     }
 
     public void deleteById(final long entityId) {

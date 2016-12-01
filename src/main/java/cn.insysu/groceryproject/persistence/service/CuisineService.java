@@ -25,4 +25,11 @@ public class CuisineService {
 
     public List<Cuisine> findAll() { return dao.findAll(); }
 
+    public Cuisine update(Cuisine entity) { return dao.update(entity); }
+
+    public void delete(Cuisine entity) { dao.delete(entity); }
+
+    public void deleteById(final long id) { dao.deleteById(id); }
+
+
 }
