@@ -2,6 +2,7 @@ package cn.insysu.groceryproject.persistence.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Souler on 2016/11/30.
@@ -19,6 +20,16 @@ public class Cuisine implements Serializable {
     @JoinColumn(name = "DID")
     private Dish dish;
 
+    public List<DealContent> getOrdercontents() {
+        return ordercontents;
+    }
+
+    public void setOrdercontents(List<DealContent> ordercontents) {
+        this.ordercontents = ordercontents;
+    }
+
+    @OneToMany(mappedBy = "cuisine" , fetch = FetchType.EAGER , cascade = CascadeType.ALL)
+    private List<DealContent> ordercontents;
 
     @Column(name = "AVAIL" , nullable = false)
     private boolean isAvailable;

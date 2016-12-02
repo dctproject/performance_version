@@ -23,17 +23,17 @@ import static java.lang.System.out;
  */
 public class DBTest {
     public static void main(String [] args) {
-        out.println("Exec1");
+
         AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
-        out.println("Exec1");
+
         annotationConfigApplicationContext.register(JPAConfig.class);
-        out.println("Exec1");
+
         annotationConfigApplicationContext.refresh();
         out.println("Start:"+ annotationConfigApplicationContext.getBean("entityManagerFactory").toString());
         out.println("Start:" + annotationConfigApplicationContext.getBean(LocalContainerEntityManagerFactoryBean.class).toString());
 
-//        UserService us = annotationConfigApplicationContext.getBean(UserService.class);
-//        UserTest.ExecuteTest(us , 10);
+        UserService us = annotationConfigApplicationContext.getBean(UserService.class);
+        UserTest.ExecuteTest(us , 10);
 
         CuisineService cs = annotationConfigApplicationContext.getBean(CuisineService.class);
         DishService ds = annotationConfigApplicationContext.getBean(DishService.class);
