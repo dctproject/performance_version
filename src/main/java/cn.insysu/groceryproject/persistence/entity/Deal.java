@@ -18,6 +18,7 @@ import java.util.List;
 @Entity
 public class Deal implements Serializable {
     private static final long serialVersionUID = 1L;
+    public static final int ERROR = 0;
     public static final int UNPAID = 1000;
     public static final int PAID = 1001;
     public static final int DELIVERING = 1010;

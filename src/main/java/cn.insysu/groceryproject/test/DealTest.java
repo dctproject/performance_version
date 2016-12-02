@@ -124,9 +124,57 @@ public class DealTest {
         out.println("-----------------------Finished Database Creation--------------------------");
     }
 
+    private static void testFindAll(DealService es) {
+        out.println("-----------------------Testing ALL Element Existence---------------------------");
+        List<Deal> deals = es.findAll();
+        out.println("Successfully get all elements");
+        for (Deal d:deals) {
+            out.println("Found in database: " + d.toString());
+            if (dealTestList.indexOf(d) == -1) {
+                dealTestList.add(d);
+//                if (d.getUser().getDeals().indexOf(d) == -1) {
+//                    d.getUser().getDeals().add(d);
+//                }
+            }
+        }
+        out.println("-----------------------Finished ALL Element Existence--------------------------");
+    }
+
+    private static void testFindOne(DealService ds , final int TestCases) {
+        out.println("-----------------------Testing Single Element Existence---------------------------");
+        if (dealTestList.size() == 0) return;
+        out.println("-----------------------------Testing Case: " + TestCases + "----------------------------------");
+        for (int i = 0 ; i < TestCases ; i++) {
+            int pos = (int) Math.round(Math.random() * (dealTestList.size() - 1));
+            out.print("Testing on id:" + dealTestList.get(pos).getOid());
+            out.println("  : " + ds.findOne(dealTestList.get(pos).getOid()));
+        }
+        out.println("-----------------------Finished Single Element Existence--------------------------");
+    }
+
+    private static void testUpdate(DealService es , final int testCases) {
+        out.println("-----------------------Testing Single Element Updation---------------------------");
+        out.println("-----------------------------Testing Case: " + testCases + "----------------------------------");
+        if (dealTestList.size() == 0) return;
+        for (int i = 0 ; i < testCases ; i++) {
+            int pos = (int) Math.round(Math.random() * (dealTestList.size() - 1));
+//            Modify value by setting to 1000
+            if (dealTestList.get(pos).getState() == Deal.ERROR) dealTestList.get(pos).setState(Deal.UNPAID);
+            dealTestList.get(pos).setState(Deal.SUCCEED);
+            out.print("Updating " + dealTestList.get(pos).toString());
+            es.update(dealTestList.get(pos));
+            out.println("...Done!");
+        }
+        out.println("-----------------------Finished Single Element Updation--------------------------");
+    }
+
+
     public static List<Deal> ExecuteTest(UserService us , CuisineService cs , DishService ds , DealContentService dcs , DealService es , int amount) {
         testInitialization(us,ds,cs,amount);
         testCreate(es,dcs);
+        testFindAll(es);
+        testFindOne(es,10);
+        testUpdate(es,10);
         return dealTestList;
     }
 }

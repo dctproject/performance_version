@@ -109,7 +109,7 @@ public class UserTest {
         testCreate(us);
         testFindAll(us);
         testFindOne(us , (int)Math.round(Math.random() * amount));
-        testRemoveUser(us , 10);
+//        testRemoveUser(us , 10);
         out.println("-----------------------Finished On User--------------------------");
         out.println("-----------------------------------------------------------------");
         out.println("");
