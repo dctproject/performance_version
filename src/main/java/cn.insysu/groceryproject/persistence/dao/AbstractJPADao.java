@@ -1,7 +1,8 @@
 package cn.insysu.groceryproject.persistence.dao;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import org.hibernate.Hibernate;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -24,6 +25,20 @@ public abstract class AbstractJPADao<T extends Serializable> {
 
     public T findOne(final long id) {
         return entityManager.find(innerClass, id);
+    }
+
+    public List<T> findByStatement(final String statement , final String data) {
+//        if (type == "int") {
+//            entityManager.createQuery("from " + innerClass.getName() + " where " + statement + "=" + Integer.parseInt(data));
+//        } else if (type == "long") {
+//            ene
+//        } else if (type == "string") {
+//
+//        }
+        Query q = entityManager.createQuery("from " + innerClass.getName() + " as p where p." + statement + "=:" + statement);
+//        q.setParameter(1,data);
+        q.setParameter(statement , data);
+        return q.getResultList();
     }
 
     @SuppressWarnings("unchecked")

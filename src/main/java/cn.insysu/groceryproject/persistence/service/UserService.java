@@ -30,4 +30,6 @@ public class UserService {
     public void delete(final User entity) { dao.delete(entity); }
 
     public void deleteById(final long id) { dao.deleteById(id); }
+
+    public User findByName(final String name) { return dao.findByName(name); }
 }

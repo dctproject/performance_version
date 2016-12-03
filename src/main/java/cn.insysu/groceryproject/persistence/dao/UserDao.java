@@ -8,6 +8,7 @@ import java.util.List;
  */
 public interface UserDao  {
     User findOne(long id);
+    User findByName(String name);
     List<User> findAll();
     void create(User entity);
     User update(User entity);

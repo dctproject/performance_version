@@ -102,6 +102,24 @@ public class UserTest {
         out.println("-----------------------Finished Single Element Removal---------------------------");
     }
 
+    public static void testFindByName(UserService us , int testCases) {
+        out.println("-----------------------Testing Find By Name---------------------------");
+        if (userTestList.size() == 0) return;
+        out.println("-----------------------------Testing Case: " + testCases + "----------------------------------");
+        for (int i = 0 ; i < testCases ; i++) {
+            int pos = (int) Math.round(Math.random() * (userTestList.size() - 1));
+            out.print("Testing on name:" + userTestList.get(pos).getUsername());
+            User hisname = us.findByName(userTestList.get(pos).getUsername());
+            if (hisname == null) {
+                out.println("  : " + "NOT FOUND!");
+            } else {
+                out.println("  : " + hisname.toString());
+            }
+        }
+        out.println("-----------------------Finished Find By Name--------------------------");
+
+    }
+
     public static ArrayList<User> ExecuteTest(UserService us , final int amount) {
         out.println("-----------------------------------------------------------------");
         out.println("-----------------------Testing On User---------------------------");
@@ -109,6 +127,7 @@ public class UserTest {
         testCreate(us);
         testFindAll(us);
         testFindOne(us , (int)Math.round(Math.random() * amount));
+        testFindByName(us , 3);
 //        testRemoveUser(us , 10);
         out.println("-----------------------Finished On User--------------------------");
         out.println("-----------------------------------------------------------------");
