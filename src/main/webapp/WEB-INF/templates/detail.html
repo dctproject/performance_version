@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <title>Spring Thyme Seed Starter Manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div id="cuisines">
+    <div class="cuisine">
+
+        <img th:src="@{${'/image/'+cuisine.dish.dname}}" alt="">
+        <span class="name" th:text="${cuisine.dish.dname}"></span>
+        <span class="description" th:text="${cuisine.dish.ddetail}"></span>
+        <span class="amount" th:text="${'amount:' + cuisine.remainQuantity}"></span>
+        <span class="price" th:text="${'price:' + cuisine.dish.dprice}"></span>
+        <span shiro:hasrole="vip" class="price" th:text="${'VIPprice' + cuisine.dish.dprice * (1 - 0.05*(cuisine.isVIPOffer()?1:0))}"></span>
+        <hr/>
+    </div>
+</div>
+</body>

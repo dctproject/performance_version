@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <title>Spring Thyme Seed Starter Manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+<div id="cuisines">
+    <div class="cuisine" th:each="cuisine : ${allDishes}">
+        <span class="name" th:text="${cuisine.dname}"></span>
+        <span class="description" th:text="${cuisine.ddetail}"></span>
+        <span class="price" th:text="${cuisine.dprice}"></span>
+        <hr/>
+    </div>
+</div>
+<shiro:guest><a th:href="@{'/login'}">登录</a></shiro:guest>
+<shiro:user><a th:href="@{'/menu'}">去点菜</a></shiro:user>
+
+</body>
+</html>
