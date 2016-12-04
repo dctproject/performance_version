@@ -2,9 +2,12 @@
 
 <html xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 
+
 <head>
     <title>Spring Thyme Seed Starter Manager</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all" href="../../css/material.min.css" th:href="@{/css/material.min.css}"/>
+    <script th:href="@{/javascript/material.min.js}"></script>
 </head>
 
 <body>
@@ -16,7 +19,7 @@
         <hr/>
     </div>
 </div>
-<shiro:guest><a th:href="@{'/login'}">登录</a></shiro:guest>
+<shiro:guest><a class="mdl-button" th:href="@{'/login'}">登录</a></shiro:guest>
 <shiro:user><a th:href="@{'/menu'}">去点菜</a></shiro:user>
 
 </body>

@@ -59,9 +59,9 @@ public class SpringWebConfig
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         super.addResourceHandlers(registry);
-        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/image/**").addResourceLocations("/image/");
         registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
+        registry.addResourceHandler("/javascript/**").addResourceLocations("/javascript/");
     }
 
     /*
