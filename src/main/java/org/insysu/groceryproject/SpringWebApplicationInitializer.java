@@ -1,5 +1,6 @@
 package org.insysu.groceryproject;
 
+import org.insysu.groceryproject.configuration.CacheConfig;
 import org.insysu.groceryproject.configuration.JPAConfig;
 import org.insysu.groceryproject.configuration.SecurityConfig;
 import org.insysu.groceryproject.web.SpringWebConfig;
@@ -39,7 +40,7 @@ public class SpringWebApplicationInitializer extends AbstractAnnotationConfigDis
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] { JPAConfig.class, SecurityConfig.class};
+        return new Class<?>[] { JPAConfig.class, SecurityConfig.class, CacheConfig.class};
     }
 
     @Override

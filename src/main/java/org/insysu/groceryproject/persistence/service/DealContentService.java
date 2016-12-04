@@ -3,6 +3,7 @@ package org.insysu.groceryproject.persistence.service;
 import org.insysu.groceryproject.persistence.dao.DealContentDao;
 import org.insysu.groceryproject.persistence.entity.DealContent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,7 @@ public class DealContentService {
     public DealContentService() {super();}
 
     public void create(final DealContent entity) { dao.create(entity); }
-
+    @Cacheable("row")
     public DealContent findOne(final long id) { return dao.findOne(id); }
 
     public List<DealContent> findAll() { return dao.findAll(); }
