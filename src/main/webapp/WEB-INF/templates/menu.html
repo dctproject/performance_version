@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head>
+    <title>Spring Thyme Seed Starter Manager</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+
+    <div id="cuisines" th:each="cuisine : ${allCuisines}" >
+        <form method="post" class="cuisine">
+            <a th:href="@{${'/cuisine_detail/' + cuisine.cid}}"><span class="name" th:text="${cuisine.dish.dname}"></span></a>
+            <span class="description" th:text="${cuisine.dish.ddetail}"></span>
+            <span class="price" th:text="${'price:' + cuisine.dish.dprice}"></span>
+            <input type="number" name="quantity">
+            <button type="submit" shiro:user=""  name="select-cuisine" th:value="${cuisine.cid}">order this</button>
+            <hr/>
+        </form>
+    </div>
+    <form action="" method="post" th:object="${deal}" th:unless="${deal.ordercontents == null || deal.ordercontents.isEmpty()}">
+        <div class="menu">
+            <div class="cuisines" th:each="order, orderStat : *{ordercontents}">
+                <span th:text="${order.cuisine.dish.dname}"></span>
+                <span th:text="${order.quantity}"></span>
+                <button type="submit" name="remove-cuisine" th:value="${orderStat.index}">remove</button>
+            </div>
+        </div>
+        <button type="submit" name="save">submit</button>
+    </form>
+
+
+</body>
